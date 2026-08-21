@@ -91,6 +91,7 @@ internal static class EnemyDropDiagnostics
 /// carry a check as-is.
 /// </summary>
 [HarmonyPatch(typeof(global::PersistentEnemyItemDrop), "Awake")]
+[DiscoveryProbe]
 internal static class PersistentEnemyItemDropProbe
 {
     [HarmonyPostfix]
@@ -130,6 +131,7 @@ internal static class PersistentEnemyItemDropProbe
         typeof(Transform),
         typeof(int),
     })]
+[DiscoveryProbe]
 internal static class HealthManagerDropProbe
 {
     [HarmonyPostfix]
@@ -156,6 +158,7 @@ internal static class HealthManagerDropProbe
 /// Corpse loot. Rerolls its table on every <c>Start</c> and persists nothing.
 /// </summary>
 [HarmonyPatch(typeof(global::CorpseItems), "Start")]
+[DiscoveryProbe]
 internal static class CorpseItemsProbe
 {
     [HarmonyPostfix]

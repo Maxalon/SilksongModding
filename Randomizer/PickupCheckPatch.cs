@@ -73,15 +73,22 @@ internal static class PickupCheckPatch
         // Names routinely contain spaces ("Rosary String"), so every value that holds one is quoted.
         // Without that, a space-delimited key=value line cannot be parsed back out of the log — which is
         // the whole point of emitting it, since the check database is built by harvesting these lines.
+        // One line per pickup in the scene: how the check database was built in the first place, and pure
+        // noise once it exists. The swap line below is not gated - that one is the proof a seed took
+        // effect, and is worth having in every log.
+        //
         // iid and path are what make a repeated key readable. A key logged five times is either one
         // pickup seen five times or five pickups sharing a key that is not an identity, and only the
         // instance id separates those two cases.
-        SilksongModdingPlugin.LogCheck(
-            $"[check] pickup key='{check}' idmode={idMode} collect={collectMode} " +
-            $"vanilla='{(vanilla ? vanilla.name : "<null>")}' " +
-            $"vanillaType={(vanilla ? vanilla.GetType().Name : "-")} " +
-            $"unique={(vanilla && vanilla.IsUnique)} " +
-            $"iid={pickup.GetInstanceID()} path='{GrantDiagnostics.HierarchyPathOf(pickup.transform)}'");
+        if (SilksongModdingPlugin.DiscoveryEnabled)
+        {
+            SilksongModdingPlugin.LogCheck(
+                $"[check] pickup key='{check}' idmode={idMode} collect={collectMode} " +
+                $"vanilla='{(vanilla ? vanilla.name : "<null>")}' " +
+                $"vanillaType={(vanilla ? vanilla.GetType().Name : "-")} " +
+                $"unique={(vanilla && vanilla.IsUnique)} " +
+                $"iid={pickup.GetInstanceID()} path='{GrantDiagnostics.HierarchyPathOf(pickup.transform)}'");
+        }
 
         if (!RandomizerPlacements.TryGetReplacement(
                 check, GrantDiagnostics.HierarchyPathOf(pickup.transform), out string replacementName))

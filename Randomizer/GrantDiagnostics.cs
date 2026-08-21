@@ -249,6 +249,7 @@ internal static class GrantDiagnostics
 /// </para>
 /// </remarks>
 [HarmonyPatch(typeof(global::CollectableItemManager), nameof(global::CollectableItemManager.AddItem))]
+[DiscoveryProbe]
 internal static class ItemGrantProbe
 {
     [HarmonyPostfix]
@@ -364,6 +365,7 @@ internal static class FsmItemGrantProbe
 /// produced them, and this is what names it.
 /// </remarks>
 [HarmonyPatch(typeof(global::CollectableItemPickup), nameof(global::CollectableItemPickup.SetItem))]
+[DiscoveryProbe]
 internal static class PickupSpawnProbe
 {
     [HarmonyPostfix]
@@ -403,6 +405,7 @@ internal static class PickupSpawnProbe
 /// </remarks>
 [HarmonyPatch(typeof(global::Breakable), nameof(global::Breakable.Break),
     new[] { typeof(float), typeof(float), typeof(float) })]
+[DiscoveryProbe]
 internal static class BreakableProbe
 {
     [HarmonyPostfix]
@@ -441,6 +444,7 @@ internal static class BreakableProbe
 /// </remarks>
 [HarmonyPatch(typeof(global::ObjectPool), nameof(global::ObjectPool.Spawn),
     new[] { typeof(GameObject), typeof(Transform), typeof(Vector3), typeof(Quaternion), typeof(bool) })]
+[DiscoveryProbe]
 internal static class PooledPickupSpawnProbe
 {
     [HarmonyPostfix]
@@ -489,6 +493,7 @@ internal static class PooledPickupSpawnProbe
 /// </remarks>
 [HarmonyPatch(typeof(global::HitTaker), nameof(global::HitTaker.Hit),
     new[] { typeof(GameObject), typeof(global::HitInstance), typeof(int), typeof(HashSet<global::IHitResponder>) })]
+[DiscoveryProbe]
 internal static class HitProbe
 {
     [HarmonyPrefix]
@@ -527,6 +532,7 @@ internal static class HitProbe
 /// </para>
 /// </remarks>
 [HarmonyPatch]
+[DiscoveryProbe]
 internal static class FsmSpawnProbe
 {
     private static readonly string[] SpawnActions =

@@ -36,6 +36,16 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
     /// player receives and has no business running unasked.
     /// </remarks>
     private static BepInEx.Configuration.ConfigEntry<string>? fsmItemSwap;
+
+    /// <summary>
+    /// Whether the observation-only probes are patched in at all.
+    /// </summary>
+    /// <remarks>
+    /// Off by default now that the archetypes are known. They were how the check model got built, but
+    /// several hook very hot paths, and a mod that is being played rather than investigated should not be
+    /// paying for that.
+    /// </remarks>
+    private static BepInEx.Configuration.ConfigEntry<bool>? discoveryProbes;
     private static ManualLogSource? log;
     private static SilksongModdingPlugin? pluginInstance;
 
@@ -49,13 +59,21 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
     {
         pluginInstance = this;
         log = Logger;
+        discoveryProbes = Config.Bind(
+            "Discovery",
+            "EnableProbes",
+            false,
+            "Patch in the observation-only probes that log what the game does with items - pickups seen, "
+            + "grants, FSM item actions, enemy drops, hits. They hook hot paths (every hit in the game "
+            + "goes through one of them), so leave this off unless you are investigating something.");
+
         harmony = new Harmony(Id);
         ApplyPatchesIndependently(harmony);
 
         dumpScenes = Config.Bind(
             "Discovery",
             "DumpScenesOnLoad",
-            true,
+            false,
             "Write a list of every item-bearing object in each scene to BepInEx/SilksongModding-dumps/. "
             + "Each scene is dumped once per session. Turn this off for ordinary play.");
 
@@ -96,10 +114,18 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
     {
         int applied = 0;
         int failed = 0;
+        int skipped = 0;
 
         foreach (System.Type candidate in AccessTools.GetTypesFromAssembly(
                      System.Reflection.Assembly.GetExecutingAssembly()))
         {
+            if (candidate.IsDefined(typeof(Randomizer.DiscoveryProbeAttribute), inherit: false)
+                && discoveryProbes is not { Value: true })
+            {
+                skipped++;
+                continue;
+            }
+
             try
             {
                 // Returns null for any type that is not a Harmony patch class, so this needs no filter.
@@ -115,7 +141,11 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
             }
         }
 
-        Logger.LogInfo($"Applied {applied} patch class(es){(failed > 0 ? $", skipped {failed} after errors" : string.Empty)}.");
+        Logger.LogInfo(
+            $"Applied {applied} patch class(es)"
+            + (skipped > 0 ? $", left {skipped} discovery probe(s) unpatched" : string.Empty)
+            + (failed > 0 ? $", skipped {failed} after errors" : string.Empty)
+            + ".");
     }
 
     private IEnumerator Start()
@@ -168,6 +198,9 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
     {
         log?.LogWarning(message);
     }
+
+    /// <summary>Whether observation-only logging should be emitted at all.</summary>
+    internal static bool DiscoveryEnabled => discoveryProbes is { Value: true };
 
     /// <summary>Menu construction and navigation wiring.</summary>
     internal static void LogMenu(string message)
