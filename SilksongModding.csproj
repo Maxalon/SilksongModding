@@ -42,6 +42,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- The check database is generated offline from the game bundles by tools/build-check-db.py and read
+         at runtime by CheckDatabase. Embedded so the plugin stays a single file to install. -->
+    <EmbeddedResource Include="Randomizer/checks.json" LogicalName="SilksongModding.Randomizer.checks.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <!-- tools/console holds C# meant for the in-game CinematicUnityExplorer console, not for this
          assembly. It is pasted into a running game and compiled by that interpreter, so it must stay out
          of the project's default compile glob. -->

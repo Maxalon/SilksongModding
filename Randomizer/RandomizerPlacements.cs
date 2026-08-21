@@ -20,34 +20,10 @@ namespace SilksongModding.Randomizer;
 /// </remarks>
 internal static class RandomizerPlacements
 {
-    /// <summary>
-    /// Hardcoded placements for the vertical slice, keyed by <see cref="CheckId.ToString"/>.
-    /// </summary>
-    /// <remarks>
-    /// Leave this empty for the first run. The pickup patch logs a <c>[check] pickup key='...'</c> line
-    /// for every pickup it sees, so play to the target pickup and then run
-    /// <c>tools/harvest-checks.sh</c>, which reduces <c>BepInEx/LogOutput.log</c> to a deduplicated check
-    /// list and emits paste-ready entries for this table.
-    /// <para>
-    /// Use a non-unique replacement. <c>CollectableItemPickup.CheckActivation</c> hides any pickup whose
-    /// item reports <c>!CanGetMore()</c>, so placing a unique item the save already owns makes the check
-    /// silently vanish from the world with no error.
-    /// </para>
-    /// <example>
-    /// <code>
-    /// { "pickup:Mosstown_01:Rosary String", "Mossberry" },
-    /// </code>
-    /// </example>
-    /// </remarks>
-    private static readonly Dictionary<string, string> SlicePlacements = new();
-
     private static readonly Dictionary<string, string> Active = new();
 
     /// <summary>True once a save's placements have been loaded.</summary>
     internal static bool IsLoaded { get; private set; }
-
-    internal static bool TryGetReplacement(in CheckId check, out string replacementItemName) =>
-        Active.TryGetValue(check.ToString(), out replacementItemName!);
 
     /// <summary>
     /// Populates the table for the save that is being entered. Safe to call more than once.
@@ -55,13 +31,32 @@ internal static class RandomizerPlacements
     internal static void LoadForCurrentSave()
     {
         Active.Clear();
-        foreach (KeyValuePair<string, string> placement in SlicePlacements)
+
+        // Read back from the save rather than regenerated from the seed, so a save in progress keeps the
+        // layout it was created with even if the database or the fill changes underneath it.
+        foreach (KeyValuePair<string, string> placement in SilksongModdingPlugin.CurrentPlacements)
         {
             Active[placement.Key] = placement.Value;
         }
 
         IsLoaded = true;
         SilksongModdingPlugin.LogCheck($"[placements] loaded {Active.Count} placement(s).");
+    }
+
+    /// <summary>
+    /// Looks up a placement, preferring an entry qualified by hierarchy path.
+    /// </summary>
+    /// <remarks>
+    /// Most checks are keyed by id alone. Where a scene holds two checks reporting the same id — a blank
+    /// persistence id is filled in from the GameObject name, and names repeat — the generator stores them
+    /// under "id|path". Trying the qualified form first means those two receive different items instead of
+    /// both taking whichever was written last.
+    /// </remarks>
+    internal static bool TryGetReplacement(in CheckId check, string hierarchyPath, out string replacementItemName)
+    {
+        string id = check.ToString();
+        return Active.TryGetValue(id + "|" + hierarchyPath, out replacementItemName!)
+               || Active.TryGetValue(id, out replacementItemName!);
     }
 
     /// <summary>

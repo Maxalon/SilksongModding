@@ -83,7 +83,8 @@ internal static class PickupCheckPatch
             $"unique={(vanilla && vanilla.IsUnique)} " +
             $"iid={pickup.GetInstanceID()} path='{GrantDiagnostics.HierarchyPathOf(pickup.transform)}'");
 
-        if (!RandomizerPlacements.TryGetReplacement(check, out string replacementName))
+        if (!RandomizerPlacements.TryGetReplacement(
+                check, GrantDiagnostics.HierarchyPathOf(pickup.transform), out string replacementName))
         {
             return;
         }

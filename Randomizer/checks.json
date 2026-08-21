@@ -1,0 +1,1287 @@
+{
+ "checks": [
+  {
+   "ambiguous": true,
+   "id": "pickup:Abandoned_town:Collectable Item Pickup",
+   "item": "Memento Surface",
+   "key": "Abandoned_town:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Abandoned_town"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Abandoned_town:Collectable Item Pickup",
+   "item": "Memento Surface",
+   "key": "Abandoned_town:Collectable Item Pickup",
+   "path": "Memory Group/abandoned_town_memento_dropper/collectable item fall/Collectable Item Pickup",
+   "scene": "Abandoned_town"
+  },
+  {
+   "id": "pickup:Abyss_04:Collectable Item Pickup",
+   "item": "Ancient Egg Abyss Middle",
+   "key": "Abyss_04:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Abyss_04"
+  },
+  {
+   "id": "pickup:Abyss_08:Collectable Item Pickup",
+   "item": "Farsight",
+   "key": "Abyss_08:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Abyss_08"
+  },
+  {
+   "id": "pickup:Ant_04_left:Collectable Item Pickup",
+   "item": "Rosary_Set_Medium",
+   "key": "Ant_04_left:Collectable Item Pickup",
+   "path": "ant_item_string/Item Holder/Collectable Item Pickup",
+   "scene": "Ant_04_left"
+  },
+  {
+   "id": "pickup:Ant_08:Collectable Item Pickup",
+   "item": "Vintage Nectar",
+   "key": "Ant_08:Collectable Item Pickup",
+   "path": "Battle Scene/End Scene/Collectable Item Pickup",
+   "scene": "Ant_08"
+  },
+  {
+   "id": "pickup:Ant_20:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Ant_20:Collectable Item Pickup",
+   "path": "Enemy Break Cage (2)/Corpse/Collectable Item Pickup",
+   "scene": "Ant_20"
+  },
+  {
+   "id": "pickup:Ant_21:Collectable Item Pickup",
+   "item": "Curve Claws",
+   "key": "Ant_21:Collectable Item Pickup",
+   "path": "ant_item_string/Item Holder/Collectable Item Pickup",
+   "scene": "Ant_21"
+  },
+  {
+   "id": "pickup:Ant_Merchant:Collectable Item Pickup",
+   "item": "Fractured Mask",
+   "key": "Ant_Merchant:Collectable Item Pickup",
+   "path": "_NPCs/Ant Merchant States/Ant Merchant Dead/Collectable Item Pickup",
+   "scene": "Ant_Merchant"
+  },
+  {
+   "id": "pickup:Ant_Queen:Collectable Item Pickup",
+   "item": "Hunter Heart",
+   "key": "Ant_Queen:Collectable Item Pickup",
+   "path": "Memory Group/gone/Collectable Item Pickup",
+   "scene": "Ant_Queen"
+  },
+  {
+   "id": "pickup:Aqueduct_01:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Aqueduct_01:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Aqueduct_01"
+  },
+  {
+   "id": "pickup:Aueduct_04:Collectable Item Pickup Slab Key",
+   "item": "Slab Key C",
+   "key": "Aueduct_04:Collectable Item Pickup Slab Key",
+   "path": "Breakable_cage/Collectable Item Pickup Slab Key",
+   "scene": "Aqueduct_04"
+  },
+  {
+   "id": "pickup:Aqueduct_05:Collectable Item Pickup - Tool Metal",
+   "item": "Tool Metal",
+   "key": "Aqueduct_05:Collectable Item Pickup - Tool Metal",
+   "path": "tool_metal_deposit/Collectable Item Pickup - Tool Metal",
+   "scene": "Aqueduct_05"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 1",
+   "item": "Rosary_Set_Small",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 1",
+   "path": "Caravan_States/Flea Festival Outro/Flea Festival Pinata/Item Reward 1/Collectable Item Pickup Reward 1",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 2",
+   "item": "Rosary_Set_Medium",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 2",
+   "path": "Caravan_States/Flea Festival Outro/Flea Festival Pinata/Item Reward 2/Collectable Item Pickup Reward 2",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 3",
+   "item": "Pale_Oil",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 3",
+   "path": "Caravan_States/Flea Festival Outro/Flea Festival Pinata/Item Reward Final/Collectable Item Pickup Reward 3",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 1",
+   "item": "Rosary_Set_Small",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 1",
+   "path": "Caravan_States/Flea Festival/Flea Festival Pinata Inert/Item Reward 1/Collectable Item Pickup Reward 1",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 2",
+   "item": "Rosary_Set_Medium",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 2",
+   "path": "Caravan_States/Flea Festival/Flea Festival Pinata Inert/Item Reward 2/Collectable Item Pickup Reward 2",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 3",
+   "item": "Pale_Oil",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 3",
+   "path": "Caravan_States/Flea Festival/Flea Festival Pinata Inert/Item Reward Final/Collectable Item Pickup Reward 3",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 1",
+   "item": "Rosary_Set_Small",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 1",
+   "path": "Caravan_States/Flea_Festival_Intro/Flea Festival Pinata Inert/Item Reward 1/Collectable Item Pickup Reward 1",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 2",
+   "item": "Rosary_Set_Medium",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 2",
+   "path": "Caravan_States/Flea_Festival_Intro/Flea Festival Pinata Inert/Item Reward 2/Collectable Item Pickup Reward 2",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Aqueduct_05_festival:Collectable Item Pickup Reward 3",
+   "item": "Pale_Oil",
+   "key": "Aqueduct_05_festival:Collectable Item Pickup Reward 3",
+   "path": "Caravan_States/Flea_Festival_Intro/Flea Festival Pinata Inert/Item Reward Final/Collectable Item Pickup Reward 3",
+   "scene": "Aqueduct_05_festival"
+  },
+  {
+   "id": "pickup:Aqueduct_06:Collectable Item Pickup",
+   "item": "Maggot Charm",
+   "key": "Aqueduct_06:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Aqueduct_06"
+  },
+  {
+   "id": "pickup:Arborium_05:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Arborium_05:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Arborium_05"
+  },
+  {
+   "id": "pickup:Arborium_07:Collectable Item Pickup Battle",
+   "item": "Lightning Rod",
+   "key": "Arborium_07:Collectable Item Pickup Battle",
+   "path": "Battle Scene/End Scene/Collectable Item Pickup Battle",
+   "scene": "Arborium_07"
+  },
+  {
+   "id": "pickup:Arborium_07:Collectable Item Pickup Materium",
+   "item": "Materium",
+   "key": "Arborium_07:Collectable Item Pickup Materium",
+   "path": "Collectable Item Pickup Materium",
+   "scene": "Arborium_07"
+  },
+  {
+   "id": "pickup:Arborium_10:Collectable Item Pickup",
+   "item": "Cog Heart Pieces",
+   "key": "Arborium_10:Collectable Item Pickup",
+   "path": "Music Box Sequence - EDITED/music_box_reward_pillar/Collectable Holder/Collectable Item Pickup",
+   "scene": "Arborium_10"
+  },
+  {
+   "id": "pickup:Arborium_11:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Arborium_11:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Arborium_11"
+  },
+  {
+   "id": "pickup:Aspid_01:Collectable Item Pickup (2)",
+   "item": "Seal Chit Aspid_01",
+   "key": "Aspid_01:Collectable Item Pickup (2)",
+   "path": "Collectable Item Pickup (2)",
+   "scene": "Aspid_01"
+  },
+  {
+   "id": "pickup:Bellshrine_Coral:Collectable Item Pickup",
+   "item": "Simple Key",
+   "key": "Bellshrine_Coral:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bellshrine_Coral"
+  },
+  {
+   "id": "pickup:Belltown:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Belltown:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Belltown"
+  },
+  {
+   "id": "pickup:Belltown_08:Lantern Item",
+   "item": "Wisp Lantern",
+   "key": "Belltown_08:Lantern Item",
+   "path": "Boss Scene/Lantern Item",
+   "scene": "Belltown_08"
+  },
+  {
+   "id": "pickup:Belltown_Room_shellwood:Collectable Item Pickup",
+   "item": "Harpoon",
+   "key": "Belltown_Room_shellwood:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Belltown_Room_shellwood"
+  },
+  {
+   "id": "pickup:Bellway_City:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Bellway_City:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bellway_City"
+  },
+  {
+   "id": "pickup:Bellway_Peak_02:Collectable Item Pickup",
+   "item": "Revenge Crystal",
+   "key": "Bellway_Peak_02:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bellway_Peak_02"
+  },
+  {
+   "id": "pickup:Bone_07:Collectable Item Pickup - Tool Metal",
+   "item": "Tool Metal",
+   "key": "Bone_07:Collectable Item Pickup - Tool Metal",
+   "path": "Explode Sequence/tool_metal_deposit/Collectable Item Pickup - Tool Metal",
+   "scene": "Bone_07"
+  },
+  {
+   "id": "pickup:Bone_10:Collectable Item Pickup Locket",
+   "item": "Crest Socket Unlocker",
+   "key": "Bone_10:Collectable Item Pickup Locket",
+   "path": "Black Thread States Thread Only Variant/Black Thread World/Rock Rollers Quest Not Completed/Collectable Item Pickup Locket",
+   "scene": "Bone_10"
+  },
+  {
+   "id": "pickup:Bone_10:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Bone_10:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bone_10"
+  },
+  {
+   "id": "pickup:Bone_12:Collectable Item Pickup Pin",
+   "item": "Straight Pin",
+   "key": "Bone_12:Collectable Item Pickup Pin",
+   "path": "Collectable Item Pickup Pin",
+   "scene": "Bone_12"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Bone_15:Collectable Item Pickup",
+   "item": "Skull King Fragment",
+   "key": "Bone_15:Collectable Item Pickup",
+   "path": "Boss Scene/Collectable Item Pickup",
+   "scene": "Bone_15"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Bone_15:Collectable Item Pickup",
+   "item": "Skull King Fragment",
+   "key": "Bone_15:Collectable Item Pickup",
+   "path": "Boss Scene/Corpse/Chunk/Collectable Item Pickup",
+   "scene": "Bone_15"
+  },
+  {
+   "id": "pickup:Bone_17:Collectable Item Pickup",
+   "item": "Bone Necklace",
+   "key": "Bone_17:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bone_17"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Bone_18:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Bone_18:Collectable Item Pickup",
+   "path": "Black Thread States/Black Thread World/Battle Scene/Collectable Item Pickup",
+   "scene": "Bone_18"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Bone_18:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Bone_18:Collectable Item Pickup",
+   "path": "Quest Scene/Final Encounter/Battle Scene/Collectable Item Pickup",
+   "scene": "Bone_18"
+  },
+  {
+   "id": "pickup:Bone_East_01:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Bone_East_01:Collectable Item Pickup",
+   "path": "Demo Gate (2)/Collectable Item Pickup",
+   "scene": "Bone_East_01"
+  },
+  {
+   "id": "pickup:Bone_East_04b:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Bone_East_04b:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bone_East_04b"
+  },
+  {
+   "id": "pickup:Bone_East_07:Collectable Item Pickup",
+   "item": "Weighted Anklet",
+   "key": "Bone_East_07:Collectable Item Pickup",
+   "path": "Mort Death Scene/Collectable Item Pickup",
+   "scene": "Bone_East_07"
+  },
+  {
+   "id": "pickup:Bone_East_08_boss_beastfly:Collectable Item Pickup",
+   "item": "Beastfly Remains",
+   "key": "Bone_East_08_boss_beastfly:Collectable Item Pickup",
+   "path": "Boss Scene Beastfly/Beastfly States/Defeated/Item Chunk/Collectable Item Pickup",
+   "scene": "Bone_East_08_boss_beastfly"
+  },
+  {
+   "id": "pickup:Bone_East_14:Collectable Item Pickup",
+   "item": "Rosary_Set_Small",
+   "key": "Bone_East_14:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bone_East_14"
+  },
+  {
+   "id": "pickup:Bone_East_14:Collectable Item Pickup (1)",
+   "item": "Bone Record Bone_East_14",
+   "key": "Bone_East_14:Collectable Item Pickup (1)",
+   "path": "Collectable Item Pickup (1)",
+   "scene": "Bone_East_14"
+  },
+  {
+   "id": "pickup:Bone_East_18b:Collectable Item Pickup",
+   "item": "Ant Trapper Item",
+   "key": "Bone_East_18b:Collectable Item Pickup",
+   "path": "ant_item_string/Item Holder/Collectable Item Pickup",
+   "scene": "Bone_East_18b"
+  },
+  {
+   "id": "pickup:Bone_East_22:Collectable Item Pickup",
+   "item": "Curve Claws Upgraded",
+   "key": "Bone_East_22:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bone_East_22"
+  },
+  {
+   "id": "pickup:Bone_East_24:Collectable Item Pickup",
+   "item": "Rosary_Set_Huge_White",
+   "key": "Bone_East_24:Collectable Item Pickup",
+   "path": "ant_item_string/Item Holder/Collectable Item Pickup",
+   "scene": "Bone_East_24"
+  },
+  {
+   "id": "pickup:Bone_East_25:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Bone_East_25:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bone_East_25"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Bone_East_Weavehome:Collectable Item Pickup",
+   "item": "Weaver Record Sprint_Challenge",
+   "key": "Bone_East_Weavehome:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bone_East_Weavehome"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Bone_East_Weavehome:Collectable Item Pickup",
+   "item": "Sprintmaster",
+   "key": "Bone_East_Weavehome:Collectable Item Pickup",
+   "path": "Weaver Speed Challenge/Weaver Challenge Reward/stand/holder/Collectable Item Pickup",
+   "scene": "Bone_East_Weavehome"
+  },
+  {
+   "id": "pickup:Bonetown:Collectable Item Pickup",
+   "item": "Weaver Totem Bonetown_upper_room",
+   "key": "Bonetown:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Bonetown"
+  },
+  {
+   "id": "pickup:Clover_01:Collectable Item Pickup",
+   "item": "Clover Heart",
+   "key": "Clover_01:Collectable Item Pickup",
+   "path": "Memory Scene Control/Memory Scene After/Collectable Item Pickup",
+   "scene": "Clover_01"
+  },
+  {
+   "id": "pickup:Clover_20:Collectable Item Pickup",
+   "item": "Clover Map",
+   "key": "Clover_20:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Clover_20"
+  },
+  {
+   "id": "pickup:Cog_07:Collectable Item Pickup",
+   "item": "Pristine Core",
+   "key": "Cog_07:Collectable Item Pickup",
+   "path": "Battle Scene Test/Battle Scene/Wave 2 - Item/Item Placer/Collectable Item Pickup",
+   "scene": "Cog_07"
+  },
+  {
+   "id": "pickup:Cog_10:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Cog_10:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Cog_10"
+  },
+  {
+   "id": "pickup:Coral_02:Collectable Item Pickup (1)",
+   "item": "Crest Socket Unlocker",
+   "key": "Coral_02:Collectable Item Pickup (1)",
+   "path": "Collectable Item Pickup (1)",
+   "scene": "Coral_02"
+  },
+  {
+   "id": "pickup:Coral_03:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Coral_03:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Coral_03"
+  },
+  {
+   "id": "pickup:Coral_23:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Coral_23:Collectable Item Pickup",
+   "path": "GameObject (3)/Collectable Item Pickup",
+   "scene": "Coral_23"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Coral_29:Collectable Item Pickup",
+   "item": "Zap Imbuement",
+   "key": "Coral_29:Collectable Item Pickup",
+   "path": "Boss Scene/Collectable Item Pickup",
+   "scene": "Coral_29"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Coral_29:Collectable Item Pickup",
+   "item": "Zap Imbuement",
+   "key": "Coral_29:Collectable Item Pickup",
+   "path": "Boss Scene/Zap Core Enemy/Collectable Item Pickup",
+   "scene": "Coral_29"
+  },
+  {
+   "id": "pickup:Coral_32:Collectable Item Pickup - Tool Metal",
+   "item": "Tool Metal",
+   "key": "Coral_32:Collectable Item Pickup - Tool Metal",
+   "path": "tool_metal_deposit/Collectable Item Pickup - Tool Metal",
+   "scene": "Coral_32"
+  },
+  {
+   "id": "pickup:Coral_33:Collectable Item Pickup",
+   "item": "Magnetite Dice",
+   "key": "Coral_33:Collectable Item Pickup",
+   "path": "Black Thread States/Normal World/Dice Game Control/Dice Game Corpse/Collectable Item Pickup",
+   "scene": "Coral_33"
+  },
+  {
+   "id": "pickup:Coral_36:Shell Shard Collectable Item Pickup Instant",
+   "item": "Great Shard",
+   "key": "Coral_36:Shell Shard Collectable Item Pickup Instant",
+   "path": "Shell Shard Collectable Item Pickup Instant",
+   "scene": "Coral_36"
+  },
+  {
+   "id": "pickup:Coral_41:Collectable Item Pickup",
+   "item": "Coral Ingredient",
+   "key": "Coral_41:Collectable Item Pickup",
+   "path": "Group/Collectable Item Pickup",
+   "scene": "Coral_41"
+  },
+  {
+   "id": "pickup:Coral_Tower_01:Collectable Item Pickup Fling",
+   "item": "Conch Drill",
+   "key": "Coral_Tower_01:Collectable Item Pickup Fling",
+   "path": "Memory Group/Collectible Item Pickup Scene/Collectable Item Pickup Fling",
+   "scene": "Coral_Tower_01"
+  },
+  {
+   "id": "pickup:Coral_Tower_01:Collectable Item Pickup Stand",
+   "item": "Conch Drill",
+   "key": "Coral_Tower_01:Collectable Item Pickup Stand",
+   "path": "Memory Group/Collectible Item Pickup Scene/Collectable Item Pickup Stand",
+   "scene": "Coral_Tower_01"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Coral_Tower_01:Collectable Item Pickup Heart",
+   "item": "Coral Heart",
+   "key": "Coral_Tower_01:Collectable Item Pickup Heart",
+   "path": "Memory Group/after/Collectable Item Pickup Heart",
+   "scene": "Coral_Tower_01"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Coral_Tower_01:Collectable Item Pickup Heart",
+   "item": "Coral Heart",
+   "key": "Coral_Tower_01:Collectable Item Pickup Heart",
+   "path": "Memory Group/after/GK_collapse/Collectable Item Pickup Heart",
+   "scene": "Coral_Tower_01"
+  },
+  {
+   "id": "pickup:Crawl_01:Collectable Item Pickup - Purse",
+   "item": "Dead Mans Purse",
+   "key": "Crawl_01:Collectable Item Pickup - Purse",
+   "path": "Tool Conditions/Collectable Item Pickup - Purse",
+   "scene": "Crawl_01"
+  },
+  {
+   "id": "pickup:Crawl_01:Collectable Item Pickup - Satchel",
+   "item": "Shell Satchel",
+   "key": "Crawl_01:Collectable Item Pickup - Satchel",
+   "path": "Tool Conditions/Collectable Item Pickup - Satchel",
+   "scene": "Crawl_01"
+  },
+  {
+   "id": "pickup:Crawl_02:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Crawl_02:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Crawl_02"
+  },
+  {
+   "id": "pickup:Crawl_09:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Crawl_09:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Crawl_09"
+  },
+  {
+   "id": "pickup:Dock_02:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Dock_02:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Dock_02"
+  },
+  {
+   "id": "pickup:Dock_02b:Collectable Item Pickup",
+   "item": "Flintstone",
+   "key": "Dock_02b:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Dock_02b"
+  },
+  {
+   "id": "pickup:Dock_03:Collectable Item Pickup",
+   "item": "Tool Metal",
+   "key": "Dock_03:Collectable Item Pickup",
+   "path": "City Shard Chest/Item/Collectable Item Pickup",
+   "scene": "Dock_03"
+  },
+  {
+   "id": "pickup:Dock_03b:Collectable Item Pickup",
+   "item": "Bell Bind",
+   "key": "Dock_03b:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Dock_03b"
+  },
+  {
+   "id": "pickup:Dock_11:Collectable Item Pickup",
+   "item": "Great Shard",
+   "key": "Dock_11:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Dock_11"
+  },
+  {
+   "id": "pickup:Dock_13:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Dock_13:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Dock_13"
+  },
+  {
+   "id": "pickup:Dust_01:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Dust_01:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Dust_01"
+  },
+  {
+   "id": "pickup:Dust_06:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Dust_06:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Dust_06"
+  },
+  {
+   "id": "pickup:Dust_06:Collectable Item SimpleKey",
+   "item": "Simple Key",
+   "key": "Dust_06:Collectable Item SimpleKey",
+   "path": "Roachkeeper Key Control/Collectable Item SimpleKey",
+   "scene": "Dust_06"
+  },
+  {
+   "id": "pickup:Dust_Barb:Collectable Item Pickup",
+   "item": "Barbed Wire",
+   "key": "Dust_Barb:Collectable Item Pickup",
+   "path": "pontoon/Art/Collectable Item Pickup",
+   "scene": "Dust_Barb"
+  },
+  {
+   "id": "pickup:Dust_Chef:Return Pickup",
+   "item": "Pickled Roach Egg",
+   "key": "Dust_Chef:Return Pickup",
+   "path": "Battle Parent/Battle Scene/Return Pickup",
+   "scene": "Dust_Chef"
+  },
+  {
+   "id": "pickup:Dust_Shack:Collectable Item Dustpilo",
+   "item": "Tack",
+   "key": "Dust_Shack:Collectable Item Dustpilo",
+   "path": "Black Thread States Thread Only Variant/Black Thread World/Collectable Item Dustpilo",
+   "scene": "Dust_Shack"
+  },
+  {
+   "id": "pickup:Dust_Shack:Collectable Item Extractor Pins",
+   "item": "Doctor Curse Cure",
+   "key": "Dust_Shack:Collectable Item Extractor Pins",
+   "path": "Black Thread States Thread Only Variant/Black Thread World/Collectable Item Extractor Pins",
+   "scene": "Dust_Shack"
+  },
+  {
+   "id": "pickup:Greymoor_05:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Greymoor_05:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Greymoor_05"
+  },
+  {
+   "id": "pickup:Greymoor_12:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Greymoor_12:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Greymoor_12"
+  },
+  {
+   "id": "pickup:Greymoor_15:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Greymoor_15:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Greymoor_15"
+  },
+  {
+   "id": "pickup:Greymoor_15b:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Greymoor_15b:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Greymoor_15b"
+  },
+  {
+   "id": "pickup:Greymoor_15b:Collectable Item Pickup (1)",
+   "item": "Tri Pin",
+   "key": "Greymoor_15b:Collectable Item Pickup (1)",
+   "path": "Group/Collectable Item Pickup (1)",
+   "scene": "Greymoor_15b"
+  },
+  {
+   "id": "pickup:Greymoor_16:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Greymoor_16:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Greymoor_16"
+  },
+  {
+   "id": "pickup:Greymoor_21:Collectable Item Pickup",
+   "item": "Bone Record Greymoor_flooded_corridor",
+   "key": "Greymoor_21:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Greymoor_21"
+  },
+  {
+   "id": "pickup:Halfway_01:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Halfway_01:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Halfway_01"
+  },
+  {
+   "id": "pickup:Hang_06_bank:Collectable Item Pickup",
+   "item": "Rosary_Set_Huge_White",
+   "key": "Hang_06_bank:Collectable Item Pickup",
+   "path": "Thief Scene Control/Thieves Not Here/Chest/Item/Collectable Item Pickup",
+   "scene": "Hang_06_bank"
+  },
+  {
+   "id": "pickup:Hang_06_bank:Rosary Cannon Pickup",
+   "item": "Rosary Cannon",
+   "key": "Hang_06_bank:Rosary Cannon Pickup",
+   "path": "rosary_cannon/Art/Rosary Cannon Scene/Rosary Cannon Pickup",
+   "scene": "Hang_06_bank"
+  },
+  {
+   "id": "pickup:Hang_10:Collectable Item Pickup",
+   "item": "Psalm Cylinder Hang",
+   "key": "Hang_10:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Hang_10"
+  },
+  {
+   "id": "pickup:Hang_12:Collectable Item Pickup",
+   "item": "Weaver Record Conductor",
+   "key": "Hang_12:Collectable Item Pickup",
+   "path": "Black Thread States/Black Thread World/Collectable Item Pickup",
+   "scene": "Hang_12"
+  },
+  {
+   "id": "pickup:Hang_16:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Hang_16:Collectable Item Pickup",
+   "path": "laundry_basket (1)/Collectable Item Pickup",
+   "scene": "Hang_16"
+  },
+  {
+   "id": "pickup:Hang_17b:Collectable Item Pickup",
+   "item": "Reserve Bind",
+   "key": "Hang_17b:Collectable Item Pickup",
+   "path": "Boss Defeated Scene - deprecated/Collectable Item Pickup",
+   "scene": "Hang_17b"
+  },
+  {
+   "id": "pickup:Library_02:Collectable Item Pickup",
+   "item": "Rosary_Set_Large",
+   "key": "Library_02:Collectable Item Pickup",
+   "path": "GameObject/Battle Scene Control/Battle Scene Acolyte/Collectable Item Pickup",
+   "scene": "Library_02"
+  },
+  {
+   "id": "pickup:Library_03:Collectable Item Pickup",
+   "item": "Pale_Oil",
+   "key": "Library_03:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Library_03"
+  },
+  {
+   "id": "pickup:Library_08:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Library_08:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Library_08"
+  },
+  {
+   "id": "pickup:Library_08:Collectable Item Pickup Librarian",
+   "item": "Psalm Cylinder Librarian",
+   "key": "Library_08:Collectable Item Pickup Librarian",
+   "path": "Collectable Item Pickup Librarian",
+   "scene": "Library_08"
+  },
+  {
+   "id": "pickup:Library_09:Collectable Item Pickup",
+   "item": "Psalm Cylinder Library Roof",
+   "key": "Library_09:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Library_09"
+  },
+  {
+   "id": "pickup:Library_09:Collectable Item Pickup (1)",
+   "item": "Rosary_Set_Large",
+   "key": "Library_09:Collectable Item Pickup (1)",
+   "path": "Collectable Item Pickup (1)",
+   "scene": "Library_09"
+  },
+  {
+   "id": "pickup:Library_10:Collectable Item Pickup - Melody",
+   "item": "Librarian Melody Cylinder",
+   "key": "Library_10:Collectable Item Pickup - Melody",
+   "path": "Collectable Item Pickup - Melody",
+   "scene": "Library_10"
+  },
+  {
+   "id": "pickup:Library_12:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Library_12:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Library_12"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Library_13:Collectable Item Pickup",
+   "item": "Dazzle Bind Upgraded",
+   "key": "Library_13:Collectable Item Pickup",
+   "path": "Grand Stage Scene/Boss Scene TormentedTrobbio/Item Spawn/Collectable Item Pickup",
+   "scene": "Library_13"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Library_13:Collectable Item Pickup",
+   "item": "Dazzle Bind",
+   "key": "Library_13:Collectable Item Pickup",
+   "path": "Grand Stage Scene/Boss Scene Trobbio/Collectable Item Pickup",
+   "scene": "Library_13"
+  },
+  {
+   "id": "pickup:Library_13:Re-Entry Pickup",
+   "item": "Dazzle Bind",
+   "key": "Library_13:Re-Entry Pickup",
+   "path": "Grand Stage Scene/Re-Entry Pickup",
+   "scene": "Library_13"
+  },
+  {
+   "id": "pickup:Library_13:Re-Entry Pickup Upgrade",
+   "item": "Dazzle Bind Upgraded",
+   "key": "Library_13:Re-Entry Pickup Upgrade",
+   "path": "Grand Stage Scene/Re-Entry Pickup Upgrade",
+   "scene": "Library_13"
+  },
+  {
+   "id": "pickup:Library_13b:Collectable Item Pickup - Quill Purple",
+   "item": "Trobbio Quill Purple",
+   "key": "Library_13b:Collectable Item Pickup - Quill Purple",
+   "path": "Desk Inspect and Quill/Interactive Quills/Collectable Item Pickup - Quill Purple",
+   "scene": "Library_13b"
+  },
+  {
+   "id": "pickup:Library_13b:Collectable Item Pickup - Quill Red",
+   "item": "Trobbio Quill Red",
+   "key": "Library_13b:Collectable Item Pickup - Quill Red",
+   "path": "Desk Inspect and Quill/Interactive Quills/Collectable Item Pickup - Quill Red",
+   "scene": "Library_13b"
+  },
+  {
+   "id": "pickup:Library_16:Collectable Item Pickup",
+   "item": "Cog Heart Pieces",
+   "key": "Library_16:Collectable Item Pickup",
+   "path": "Music Box Sequence - EDITED/music_box_reward_pillar/Collectable Holder/Collectable Item Pickup",
+   "scene": "Library_16"
+  },
+  {
+   "id": "pickup:Mosstown_02:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Mosstown_02:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Mosstown_02"
+  },
+  {
+   "id": "pickup:Room_CrowCourt_02:Collectable Item Pickup",
+   "item": "Crowman Memento",
+   "key": "Room_CrowCourt_02:Collectable Item Pickup",
+   "path": "Battle Scene/Collectable Item Pickup",
+   "scene": "Room_CrowCourt_02"
+  },
+  {
+   "id": "pickup:Room_CrowCourt_02:Collectable Item Pickup Crawbell",
+   "item": "Crawbell",
+   "key": "Room_CrowCourt_02:Collectable Item Pickup Crawbell",
+   "path": "Collectable Item Pickup Crawbell",
+   "scene": "Room_CrowCourt_02"
+  },
+  {
+   "id": "pickup:Room_Forge:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Room_Forge:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Room_Forge"
+  },
+  {
+   "id": "pickup:Room_Forge:Collectable Item Pickup (1)",
+   "item": "Dock Demo Key",
+   "key": "Room_Forge:Collectable Item Pickup (1)",
+   "path": "Demo Pieces/Demo gate/Collectable Item Pickup (1)",
+   "scene": "Room_Forge"
+  },
+  {
+   "id": "pickup:Shadow_02:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Shadow_02:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Shadow_02"
+  },
+  {
+   "id": "pickup:Shadow_11:Collectable Item Pickup (1)",
+   "item": "Quick Sling",
+   "key": "Shadow_11:Collectable Item Pickup (1)",
+   "path": "Collectable Item Pickup (1)",
+   "scene": "Shadow_11"
+  },
+  {
+   "id": "pickup:Shadow_20:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Shadow_20:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Shadow_20"
+  },
+  {
+   "id": "pickup:Shadow_20:Collectable Item Pickup (1)",
+   "item": "Wood Witch Item",
+   "key": "Shadow_20:Collectable Item Pickup (1)",
+   "path": "Collectable Mandrake Scene/Collectable Item Pickup (1)",
+   "scene": "Shadow_20"
+  },
+  {
+   "id": "pickup:Shadow_27:Sack Corpse Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Shadow_27:Sack Corpse Pickup",
+   "path": "Breakable Hang Sack Memory Locket/Corpse Pilgrim 03/Sack Corpse Pickup",
+   "scene": "Shadow_27"
+  },
+  {
+   "id": "pickup:Shadow_Bilehaven_Room:Collectable Item Pickup (1)",
+   "item": "Snare Soul Swamp Bug",
+   "key": "Shadow_Bilehaven_Room:Collectable Item Pickup (1)",
+   "path": "Group/Collectable Item Pickup (1)",
+   "scene": "Shadow_Bilehaven_Room"
+  },
+  {
+   "id": "pickup:Shadow_Weavehome:Collectable Item Pickup",
+   "item": "Broken SilkShot",
+   "key": "Shadow_Weavehome:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Shadow_Weavehome"
+  },
+  {
+   "id": "pickup:Shellwood_01:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Shellwood_01:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Shellwood_01"
+  },
+  {
+   "id": "pickup:Shellwood_01b:Collectable Item Pickup",
+   "item": "Rosary_Set_Small",
+   "key": "Shellwood_01b:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Shellwood_01b"
+  },
+  {
+   "id": "pickup:Shellwood_11b:Collectable Item Pickup",
+   "item": "Flower Heart",
+   "key": "Shellwood_11b:Collectable Item Pickup",
+   "path": "memory_font/Completed/Collectable Item Pickup",
+   "scene": "Shellwood_11b"
+  },
+  {
+   "id": "pickup:Shellwood_13:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Shellwood_13:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Shellwood_13"
+  },
+  {
+   "id": "pickup:Shellwood_25:Collectable Item Pickup",
+   "item": "Weaver Totem Witch",
+   "key": "Shellwood_25:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Shellwood_25"
+  },
+  {
+   "id": "pickup:Shellwood_25:Collectable Item Pickup (1)",
+   "item": "Rosary_Set_Small",
+   "key": "Shellwood_25:Collectable Item Pickup (1)",
+   "path": "Collectable Item Pickup (1)",
+   "scene": "Shellwood_25"
+  },
+  {
+   "id": "pickup:Slab_02:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Slab_02:Collectable Item Pickup",
+   "path": "Slab Chain cage_small_break (2)/lamp/Broken/Collectable Item Pickup",
+   "scene": "Slab_02"
+  },
+  {
+   "id": "pickup:Slab_04:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Slab_04:Collectable Item Pickup",
+   "path": "Slab Chain cage_small_break/lamp/Broken/Collectable Item Pickup",
+   "scene": "Slab_04"
+  },
+  {
+   "id": "pickup:Slab_12:Collectable Item Pickup",
+   "item": "Weaver Totem Slab_Bottom",
+   "key": "Slab_12:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Slab_12"
+  },
+  {
+   "id": "pickup:Slab_14:Collectable Item Pickup (1)",
+   "item": "Slab Key A",
+   "key": "Slab_14:Collectable Item Pickup (1)",
+   "path": "slab_item_chain/breakable/Collectable Item Pickup (1)",
+   "scene": "Slab_14"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Slab_16:Collectable Item Pickup",
+   "item": "Slab Key B",
+   "key": "Slab_16:Collectable Item Pickup",
+   "path": "Event Control/Battle Cloaked Scene/Wave 5 - Item/Item Placer/Collectable Item Pickup",
+   "scene": "Slab_16"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Slab_16:Collectable Item Pickup",
+   "item": "Slab Key B",
+   "key": "Slab_16:Collectable Item Pickup",
+   "path": "Event Control/Battle Cloakless Scene/Wave 9 - Item/Item Placer/Collectable Item Pickup",
+   "scene": "Slab_16"
+  },
+  {
+   "id": "pickup:Slab_16:Collectable Item Pickup Return",
+   "item": "Slab Key B",
+   "key": "Slab_16:Collectable Item Pickup Return",
+   "path": "Event Control/Battle Completed Scene/Collectable Item Pickup Return",
+   "scene": "Slab_16"
+  },
+  {
+   "id": "pickup:Slab_16b:Collectable Item Pickup",
+   "item": "Slab Key C",
+   "key": "Slab_16b:Collectable Item Pickup",
+   "path": "Broodmother Scene Control/Broodmother Scene/Battle Scene Broodmother/Collectable Item Pickup",
+   "scene": "Slab_16b"
+  },
+  {
+   "id": "pickup:Slab_18:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Slab_18:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Slab_18"
+  },
+  {
+   "id": "pickup:Slab_22:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Slab_22:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Slab_22"
+  },
+  {
+   "id": "pickup:Slab_Cell_Quiet:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Slab_Cell_Quiet:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Slab_Cell_Quiet"
+  },
+  {
+   "id": "pickup:Song_04:Collectable Item Pickup",
+   "item": "Rosary_Set_Large",
+   "key": "Song_04:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Song_04"
+  },
+  {
+   "id": "pickup:Song_07:Collectable Item Pickup",
+   "item": "Rosary_Set_Medium",
+   "key": "Song_07:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Song_07"
+  },
+  {
+   "id": "pickup:Song_09:Collectable Item Pickup",
+   "item": "Rosary_Set_Medium",
+   "key": "Song_09:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Song_09"
+  },
+  {
+   "id": "pickup:Song_26:Collectable Item Pickup",
+   "item": "Cog Heart Pieces",
+   "key": "Song_26:Collectable Item Pickup",
+   "path": "_Props/Music Box Sequence - EDITED/music_box_reward_pillar/Collectable Holder/Collectable Item Pickup",
+   "scene": "Song_26"
+  },
+  {
+   "id": "pickup:Song_Enclave:Collectable Item Pickup",
+   "item": "Ward Key",
+   "key": "Song_Enclave:Collectable Item Pickup",
+   "path": "Black Thread States/Normal World/Enclave States/Ward Key Scene/Collectable Item Pickup",
+   "scene": "Song_Enclave"
+  },
+  {
+   "id": "pickup:Tube_Hub:Collectable Item Pickup",
+   "item": "Cradle Map",
+   "key": "Tube_Hub:Collectable Item Pickup",
+   "path": "Black Thread States/Black Thread World/Collectable Item Pickup",
+   "scene": "Tube_Hub"
+  },
+  {
+   "id": "pickup:Tut_01:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Tut_01:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Tut_01"
+  },
+  {
+   "id": "pickup:Under_03:Collectable Item Pickup",
+   "item": "Shard Pouch",
+   "key": "Under_03:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Under_03"
+  },
+  {
+   "id": "pickup:Under_07c:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Under_07c:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Under_07c"
+  },
+  {
+   "id": "pickup:Under_08:Collectable Item Pickup",
+   "item": "Crest Socket Unlocker",
+   "key": "Under_08:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Under_08"
+  },
+  {
+   "id": "pickup:Under_08:Collectable Item Pickup (1)",
+   "item": "Psalm Cylinder Ward",
+   "key": "Under_08:Collectable Item Pickup (1)",
+   "path": "Collectable Item Pickup (1)",
+   "scene": "Under_08"
+  },
+  {
+   "id": "pickup:Under_12:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Under_12:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Under_12"
+  },
+  {
+   "id": "pickup:Under_14:Collectable Item Pickup",
+   "item": "Screw Attack",
+   "key": "Under_14:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Under_14"
+  },
+  {
+   "id": "pickup:Under_16:Collectable Item Pickup",
+   "item": "Bone Record Understore_Map_Room",
+   "key": "Under_16:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Under_16"
+  },
+  {
+   "id": "pickup:Under_17:Collectable Item Pickup",
+   "item": "Pristine Core",
+   "key": "Under_17:Collectable Item Pickup",
+   "path": "Architect Final_Scene/Collectable Item Pickup",
+   "scene": "Under_17"
+  },
+  {
+   "id": "pickup:Under_18:Collectable Item Pickup (1)",
+   "item": "Shard Pouch",
+   "key": "Under_18:Collectable Item Pickup (1)",
+   "path": "Collectable Item Pickup (1)",
+   "scene": "Under_18"
+  },
+  {
+   "id": "pickup:Under_19b:Collectable Item Pickup - Tool Metal",
+   "item": "Tool Metal",
+   "key": "Under_19b:Collectable Item Pickup - Tool Metal",
+   "path": "tool_metal_deposit/Collectable Item Pickup - Tool Metal",
+   "scene": "Under_19b"
+  },
+  {
+   "id": "pickup:Ward_02b:Collectable Item Pickup",
+   "item": "Seal Chit Ward Corpse",
+   "key": "Ward_02b:Collectable Item Pickup",
+   "path": "Husk Item Ambush/Ward Bed (1)/corpse/Collectable Item Pickup",
+   "scene": "Ward_02b"
+  },
+  {
+   "id": "pickup:Ward_03:Collectable Item Pickup",
+   "item": "Quickbind",
+   "key": "Ward_03:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Ward_03"
+  },
+  {
+   "id": "pickup:Ward_05:Collectable Item Pickup",
+   "item": "Seal Chit Silk Siphon",
+   "key": "Ward_05:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Ward_05"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Ward_07:Collectable Item Pickup",
+   "item": "Ward Boss Key",
+   "key": "Ward_07:Collectable Item Pickup",
+   "path": "Group/Junk Hatch/Collectable Item Pickup",
+   "scene": "Ward_07"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Ward_07:Collectable Item Pickup",
+   "item": "Ward Boss Key",
+   "key": "Ward_07:Collectable Item Pickup",
+   "path": "Group/Junk Hatch/Return Corpse/Collectable Item Pickup",
+   "scene": "Ward_07"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Weave_03:Collectable Item Pickup",
+   "item": "White Ring",
+   "key": "Weave_03:Collectable Item Pickup",
+   "path": "Boss Scene/Active After Battle/Collectable Item Pickup",
+   "scene": "Weave_03"
+  },
+  {
+   "ambiguous": true,
+   "id": "pickup:Weave_03:Collectable Item Pickup",
+   "item": "White Ring",
+   "key": "Weave_03:Collectable Item Pickup",
+   "path": "Boss Scene/Battle End/Collectable Item Pickup",
+   "scene": "Weave_03"
+  },
+  {
+   "id": "pickup:Weave_08:Collectable Item Pickup",
+   "item": "Weaver Record Weave_08",
+   "key": "Weave_08:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Weave_08"
+  },
+  {
+   "id": "pickup:Weave_14:Collectable Item Pickup (1)",
+   "item": "Silk Snare",
+   "key": "Weave_14:Collectable Item Pickup (1)",
+   "path": "Collectable Item Pickup (1)",
+   "scene": "Weave_14"
+  },
+  {
+   "id": "pickup:Wisp_02:Collectable Item Pickup",
+   "item": "Rosary_Set_Medium",
+   "key": "Wisp_02:Collectable Item Pickup",
+   "path": "Collectable Scene/Collectable Item Pickup",
+   "scene": "Wisp_02"
+  },
+  {
+   "id": "pickup:Wisp_03:Collectable Item Pickup",
+   "item": "Rosary_Set_Frayed",
+   "key": "Wisp_03:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Wisp_03"
+  },
+  {
+   "id": "pickup:Wisp_05:Collectable Item Pickup - Tool Metal",
+   "item": "Tool Metal",
+   "key": "Wisp_05:Collectable Item Pickup - Tool Metal",
+   "path": "sc_cart_plat/Art/tool_metal_deposit/Collectable Item Pickup - Tool Metal",
+   "scene": "Wisp_05"
+  },
+  {
+   "id": "pickup:Wisp_08:Collectable Item Pickup",
+   "item": "Bone Record Wisp Top",
+   "key": "Wisp_08:Collectable Item Pickup",
+   "path": "Collectable Item Pickup",
+   "scene": "Wisp_08"
+  }
+ ],
+ "formatVersion": 1
+}

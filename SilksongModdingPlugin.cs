@@ -224,6 +224,18 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
         return pluginInstance.StartCoroutine(routine);
     }
 
+    /// <summary>
+    /// The layout attached to the save currently open, or empty when the save is not randomized.
+    /// </summary>
+    /// <remarks>
+    /// DataManager populates <see cref="OnceSaveData"/> only for saves the mod wrote, so a vanilla save
+    /// yields nothing here and every hook that consults it stays inert.
+    /// </remarks>
+    internal static System.Collections.Generic.IReadOnlyDictionary<string, string> CurrentPlacements =>
+        pluginInstance?.OnceSaveData?.Placements
+        ?? (System.Collections.Generic.IReadOnlyDictionary<string, string>)
+           new System.Collections.Generic.Dictionary<string, string>();
+
     internal static bool TryAttachRandomizerData(int slot, string seed)
     {
         if (pluginInstance == null)
@@ -231,8 +243,14 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
             return false;
         }
 
-        pluginInstance.OnceSaveData = new RandomizerSaveData { Seed = seed };
-        pluginInstance.Logger.LogInfo($"Prepared randomizer seed {seed} for save slot {slot}.");
+        // The layout is generated here, not on load. DataManager writes OnceSaveData once, straight after
+        // StartNewGame, so this is the last moment at which anything can be attached to the new save.
+        System.Collections.Generic.Dictionary<string, string> placements =
+            Randomizer.RandomizerFill.Generate(seed, Randomizer.CheckDatabase.Checks);
+
+        pluginInstance.OnceSaveData = new RandomizerSaveData { Seed = seed, Placements = placements };
+        pluginInstance.Logger.LogInfo(
+            $"Prepared randomizer seed {seed} for save slot {slot} with {placements.Count} placement(s).");
         return true;
     }
 
