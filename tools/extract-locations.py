@@ -132,6 +132,31 @@ class Scene:
     def name_of(self, go_id: int) -> str:
         return (self.gameobjects.get(go_id) or {}).get("m_Name") or "<unknown>"
 
+    def position_of(self, go_id: int) -> list[float] | None:
+        """World position, by summing local positions up the parent chain.
+
+        Recorded because it is the only identifier shared with hand-authored logic sets, which describe a
+        check by where it is rather than by which GameObject holds it. Names do not join across the two
+        vocabularies; coordinates do.
+
+        Rotation and scale are ignored. These are 2D props parented to plain containers, so the sum is
+        accurate enough to match a check to within a fraction of a world unit, and being approximate is
+        fine for a nearest-neighbour join that reports its own distance.
+        """
+        x = y = 0.0
+        current = self.transform_of.get(go_id)
+        seen: set[int] = set()
+        while current and current not in seen:
+            seen.add(current)
+            tree = self.transforms.get(current)
+            if not tree:
+                return None
+            local = tree.get("m_LocalPosition") or {}
+            x += float(local.get("x", 0.0))
+            y += float(local.get("y", 0.0))
+            current = tree.get("m_Father", {}).get("m_PathID") or None
+        return [round(x, 3), round(y, 3)]
+
     def path_of(self, go_id: int) -> str:
         """Hierarchy path, which is what makes an object identifiable when its name is not unique."""
         parts, seen = [], set()
@@ -172,6 +197,7 @@ def extract_scene(path: str, scripts: dict[int, str], items: dict[int, str]) -> 
                 "scene": scene_name,
                 "object": scene.name_of(go_id),
                 "path": scene.path_of(go_id),
+                "pos": scene.position_of(go_id),
                 "key": None,
                 "facts": [],
             }

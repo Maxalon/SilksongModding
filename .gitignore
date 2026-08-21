@@ -492,3 +492,6 @@ tools/.venv/
 
 # Derived from the game bundles - regenerable, and game-derived data is not ours to redistribute
 tools/locations.json
+
+# Join output - derived from a third-party check list plus the game bundles
+tools/logic-map.json
