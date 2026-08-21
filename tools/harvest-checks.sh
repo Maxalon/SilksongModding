@@ -32,9 +32,10 @@ pooled()       { lines '[pooled]' | awk '!seen[$0]++'; }
 hits()         { lines '[hit]' | awk '!seen[$0]++'; }
 fsm_spawns()   { lines '[fsmspawn]' | awk '!seen[$0]++'; }
 
-# The collision the vanilla-item check cannot see: one key shared by several distinct objects that all
-# grant the SAME item. Distinct instance ids are the proof. This is the signature of a persistent ID that
-# fell back to the prefab name - every copy spawned from that prefab reports an identical key.
+# One key reported by several distinct instance ids. NOT proof of a collision on its own: a scene reload
+# creates a fresh instance of the same authored object, so re-entering a room five times produces five ids
+# for one pickup. Simultaneity is what makes it a collision, and only a scene dump can show that - see
+# summarize-dumps.sh, which counts objects present at one moment. Read this section as "worth checking".
 shared_keys() {
   lines "[check] pickup key='" \
     | sed -n "s/.*key='\([^']*\)'.*iid=\([-0-9]*\).*/\1\t\2/p" | sort -u \
@@ -63,7 +64,7 @@ section "pickups seen (deduplicated, first-seen order)" all_pickups
 section "UNSTABLE keys (hierarchy fallback - never a durable identity)" unstable
 section "name-derived keys (fine for a scene-placed object, fatal for a spawned copy - check below)" namederived
 section "item locations the scene DECLARES via SavedItemTrackerMarker" declared
-section "one key, several distinct objects (the key is not an identity)" shared_keys
+section "one key, several instance ids (may be scene reloads - confirm against a dump)" shared_keys
 section "key collisions (same key, different vanilla item)" collisions
 section "enemy drop systems observed" drops
 section "items actually granted, and what granted them" grants

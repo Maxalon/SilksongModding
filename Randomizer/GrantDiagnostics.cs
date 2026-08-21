@@ -197,11 +197,24 @@ internal static class GrantDiagnostics
     /// </summary>
     private static string DescribeComponents(GameObject owner)
     {
+        // Long enough for a real enemy or prop. The previous cap silently dropped the tail of the list,
+        // which hid a PersistentBoolItem on an enemy and very nearly produced the wrong conclusion about
+        // whether its drop could be a check. Truncation is now stated rather than silent.
+        const int Budget = 700;
+
         StringBuilder described = new();
+        int omitted = 0;
+
         foreach (Component component in owner.GetComponents<Component>())
         {
-            if (!component || described.Length > 200)
+            if (!component)
             {
+                continue;
+            }
+
+            if (described.Length > Budget)
+            {
+                omitted++;
                 continue;
             }
 
@@ -211,6 +224,11 @@ internal static class GrantDiagnostics
             }
 
             described.Append(component.GetType().Name);
+        }
+
+        if (omitted > 0)
+        {
+            described.Append(",...+").Append(omitted).Append("-more");
         }
 
         return described.ToString();

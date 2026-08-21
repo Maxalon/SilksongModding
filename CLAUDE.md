@@ -162,6 +162,12 @@ snippet into compiled code once it earns its place, and never maintain the same 
 In that console the green **Compile** button is Run; there is no separate one. The dropdown next to it is a
 Help menu that *inserts example snippets over the editor contents*, not a mode selector.
 
+**Toggling the inspector** — `tools/explorer.sh on|off|status`. BepInEx loads every DLL under `plugins/`
+and has no per-plugin switch, and the explorer's own "Hide On Startup" only hides its UI while still paying
+the load cost. The script moves the packages in and out of the plugins tree, leaving the
+`CinematicUnityExplorer/` working directory (Scripts, config, logs) in place since it holds no assemblies.
+Turn it off for quick dump runs.
+
 **Scene dumper** (`Randomizer/SceneDump.cs`) — for "where are all of them?". On scene load it writes every
 item-bearing object to `BepInEx/SilksongModding-dumps/<scene>.txt`, then `tools/summarize-dumps.sh`
 aggregates them. Controlled by `Discovery/DumpScenesOnLoad` in
@@ -288,10 +294,32 @@ Two conclusions that shape the design:
   the scene and may carry a real key. `PickupSpawnProbe` (on `SetItem`, where the spawner is still on the
   stack) and `FsmItemGrantProbe` (which logs `FsmStateAction.Owner`) exist to find out.
 
-The enemy drop is the clearest case of a check that may not be worth having: `PersistentEnemyItemDrop`
-never fired, so the shard came from the generic `HealthManager` table, which persists nothing and re-drops
-on every kill. Randomizing it as-is would make that item infinitely farmable. **Deferred by decision
-(2026-08-21) — revisit later**, not rejected; it would need a mod-side persistence layer.
+#### Tut_01, settled by dump (2026-08-21)
+
+The first scene's real check inventory is two objects, and establishing that corrected two earlier claims.
+
+| Object | Item | Key |
+| --- | --- | --- |
+| `Collectable Item Pickup` | `Rosary_Set_Frayed` | `Tut_01:Collectable Item Pickup` |
+| `Bone Thumper` (enemy) | `Great Shard` | `Tut_01:Bone Thumper` |
+
+- **Enemy drops are viable checks after all.** `HealthManager`'s table has no *per-drop* persistence, but
+  that is a narrower fact than "farmable": what decides it is whether the **enemy** stays dead, and
+  `Bone Thumper` carries a `PersistentBoolItem` (`enemyPersists=True`). So the check keys on the enemy, not
+  the drop. The earlier decision to defer enemy drops was based on the wrong fact.
+- **The tutorial statue is not a check.** `Shell Shard Fossil Large Uni` is a `BreakableHolder` pooling only
+  `Shell Shard 01/02/03`; `Bone Chest` pools only `Geo Small/Med/Large`. Both are pure currency, which is
+  farmable and never gates progression, so neither is a location. A `Breakable` flings currency through
+  `FlingUtils` entirely separately from `itemDropGroups`, so "drops something" and "holds a check" are
+  different claims — the dump records `items=` and `currency=` apart for exactly this reason.
+- **The five colliding rosary keys were probably one object across five scene loads.** Only one rosary
+  pickup exists in Tut_01 and nothing else there drops rosary strings. Instance ids cannot separate "five at
+  once" from "one, five times"; only a dump shows simultaneity. The collision problem is real for genuinely
+  spawned loot (`Collectable Item Pickup Instant(Clone)`) but narrower than first written.
+
+Also in Tut_01: roughly 25 `moss_ball_break` / `moss_stalac` breakables with no items, no currency and no
+persistence — pure decoration, and precisely the population a "grass rando" option would draw from. They are
+already identifiable in the dumps.
 
 #### The mossberry, isolated (one bush, nothing else touched)
 

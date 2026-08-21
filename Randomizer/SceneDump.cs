@@ -136,16 +136,58 @@ internal static class SceneDump
         }
     }
 
+    /// <summary>
+    /// Records destructible props, separating the loot that could be a check from loot that never can.
+    /// </summary>
+    /// <remarks>
+    /// A <c>Breakable</c> flings currency through <c>FlingUtils</c> entirely independently of its
+    /// <c>itemDropGroups</c>, so "drops something" and "holds a check" are different claims. Currency is
+    /// farmable from the start and never gates progression, so a prop that only sheds rosaries or shards
+    /// is not a location at all — and telling that apart from a prop holding a real item is exactly the
+    /// question the tutorial statue raised. Both are recorded so the distinction is visible rather than
+    /// assumed.
+    /// </remarks>
     private static void AppendBreakable(Transform node, StringBuilder facts)
     {
         foreach (global::Breakable breakable in node.GetComponents<global::Breakable>())
         {
-            string drops = GrantDiagnostics.DescribeDropGroups(breakable);
-            if (drops != "<none>")
+            string items = GrantDiagnostics.DescribeDropGroups(breakable);
+            string currency = DescribeCurrency(breakable);
+
+            if (items == "<none>" && currency.Length == 0)
             {
-                facts.Append("  breakable drops=").Append(drops)
-                     .Append(" hits=").Append(breakable.hitsToBreak).Append('\n');
+                continue;
             }
+
+            facts.Append("  breakable items=").Append(items == "<none>" ? "<none>" : items)
+                 .Append(" currency='").Append(currency.Length > 0 ? currency : "none")
+                 .Append("' hits=").Append(breakable.hitsToBreak).Append('\n');
+        }
+    }
+
+    private static string DescribeCurrency(global::Breakable breakable)
+    {
+        StringBuilder described = new();
+        Append(described, "rosariesSmall", breakable.smallGeoDrops);
+        Append(described, "rosariesMedium", breakable.mediumGeoDrops);
+        Append(described, "rosariesLarge", breakable.largeGeoDrops);
+        Append(described, "rosariesLargeSmooth", breakable.largeSmoothGeoDrops);
+        Append(described, "shards", breakable.shellShardDrops);
+        return described.ToString();
+
+        static void Append(StringBuilder into, string label, global::TeamCherry.SharedUtils.MinMaxInt amount)
+        {
+            if (amount.End <= 0)
+            {
+                return;
+            }
+
+            if (into.Length > 0)
+            {
+                into.Append(' ');
+            }
+
+            into.Append(label).Append('=').Append(amount.Start).Append('-').Append(amount.End);
         }
     }
 
@@ -161,15 +203,18 @@ internal static class SceneDump
 
         foreach (global::HealthManager enemy in node.GetComponents<global::HealthManager>())
         {
-            // The generic table. It persists nothing, so anything here re-drops on every kill and cannot
-            // hold a check as-is — but an enemy that carries one is still a location worth recording, and
-            // the first dump missed the tutorial's shard-dropping enemy entirely for want of this.
+            // The generic table has no PER-DROP persistence, which is a narrower statement than "this is
+            // farmable". Whether the item can be obtained twice depends on whether the ENEMY stays dead,
+            // and that is recorded by the object's own key on the line above. Reporting the table fact and
+            // letting the key answer the rest avoids the earlier mistake of writing off enemy drops
+            // wholesale on the strength of the table alone.
             string drops = GrantDiagnostics.DescribeDropGroups(
                 GrantDiagnostics.ValueOfMember(enemy, "itemDropGroups"));
             if (drops != "<none>" && drops != "<empty>")
             {
+                bool enemyPersists = enemy.GetComponentInParent<global::PersistentBoolItem>(includeInactive: true);
                 facts.Append("  enemydrop table=HealthManager drops=").Append(drops)
-                     .Append(" farmable=true\n");
+                     .Append(" perDropPersistence=false enemyPersists=").Append(enemyPersists).Append('\n');
             }
         }
     }
