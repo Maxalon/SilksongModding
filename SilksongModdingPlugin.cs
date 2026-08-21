@@ -46,6 +46,18 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
     /// paying for that.
     /// </remarks>
     private static BepInEx.Configuration.ConfigEntry<bool>? discoveryProbes;
+
+    /// <summary>
+    /// Items held at their vanilla checks, comma-separated.
+    /// </summary>
+    /// <remarks>
+    /// A stand-in for reachability data. The set of items that actually gate progress in this game is
+    /// small and nameable, so holding those and shuffling everything else gives seeds that cannot deadlock
+    /// without any logic at all. Editable as config because which items gate progress is a judgement about
+    /// the game, not about the code, and is better corrected by someone who has played it than guessed at
+    /// here. Empty shuffles everything.
+    /// </remarks>
+    private static BepInEx.Configuration.ConfigEntry<string>? heldItems;
     private static ManualLogSource? log;
     private static SilksongModdingPlugin? pluginInstance;
 
@@ -66,6 +78,14 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
             "Patch in the observation-only probes that log what the game does with items - pickups seen, "
             + "grants, FSM item actions, enemy drops, hits. They hook hot paths (every hit in the game "
             + "goes through one of them), so leave this off unless you are investigating something.");
+
+        heldItems = Config.Bind(
+            "Randomizer",
+            "HoldItemsInPlace",
+            "Wallcling,Harpoon,Musician Charm,Simple Key,Architect Key,Ward Key",
+            "Comma-separated item names kept at their original locations instead of being shuffled. "
+            + "Without reachability data these are what could otherwise be placed behind themselves and "
+            + "deadlock a seed. Clear it to shuffle everything and accept that risk.");
 
         harmony = new Harmony(Id);
         ApplyPatchesIndependently(harmony);
@@ -284,8 +304,18 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
 
         // The layout is generated here, not on load. DataManager writes OnceSaveData once, straight after
         // StartNewGame, so this is the last moment at which anything can be attached to the new save.
+        System.Collections.Generic.HashSet<string> held = new(System.StringComparer.Ordinal);
+        foreach (string name in (heldItems?.Value ?? string.Empty).Split(','))
+        {
+            string trimmed = name.Trim();
+            if (trimmed.Length > 0)
+            {
+                held.Add(trimmed);
+            }
+        }
+
         Randomizer.RandomizerFill.Result layout =
-            Randomizer.RandomizerFill.Generate(seed, Randomizer.CheckDatabase.Checks);
+            Randomizer.RandomizerFill.Generate(seed, Randomizer.CheckDatabase.Checks, held);
 
         pluginInstance.OnceSaveData = new RandomizerSaveData
         {
@@ -295,7 +325,7 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
         };
         pluginInstance.Logger.LogInfo(
             $"Prepared randomizer seed {seed} for save slot {slot} with {layout.Placements.Count} "
-            + $"placement(s) and {layout.Prices.Count} shop price(s).");
+            + $"placement(s), {layout.Prices.Count} shop price(s), {held.Count} item name(s) held in place.");
         return true;
     }
 

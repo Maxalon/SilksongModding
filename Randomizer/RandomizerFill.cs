@@ -31,7 +31,10 @@ internal static class RandomizerFill
         internal Dictionary<string, int> Prices { get; } = new();
     }
 
-    internal static Result Generate(string seed, IReadOnlyList<CheckEntry> checks)
+    internal static Result Generate(
+        string seed,
+        IReadOnlyList<CheckEntry> checks,
+        ISet<string>? holdInPlace = null)
     {
         Result result = new();
         if (checks.Count == 0)
@@ -39,23 +42,44 @@ internal static class RandomizerFill
             return result;
         }
 
+        // Items that gate progress can be held at their vanilla checks. Without reachability data nothing
+        // stops the shuffle putting Wallcling behind a wall that needs Wallcling, or a key behind its own
+        // door; holding those few items still leaves everything else shuffled, and cannot deadlock. It is
+        // a blunter instrument than real logic and is meant to be replaced by it.
+        List<int> free = new(checks.Count);
+        for (int index = 0; index < checks.Count; index++)
+        {
+            if (holdInPlace != null && holdInPlace.Contains(checks[index].Item))
+            {
+                result.Placements[PlacementKey(checks[index])] = checks[index].Item;
+            }
+            else
+            {
+                free.Add(index);
+            }
+        }
+
         // One pool across both archetypes on purpose: a tool that was sold in a shop can turn up in the
         // world, and a world pickup can turn up for sale. Shuffling them separately would keep each
         // archetype's items inside it and make the shuffle far less interesting.
-        List<string> pool = new(checks.Count);
-        foreach (CheckEntry check in checks)
+        List<string> pool = new(free.Count);
+        foreach (int index in free)
         {
-            pool.Add(check.Item);
+            pool.Add(checks[index].Item);
         }
 
         ulong state = Hash(seed);
         Shuffle(pool, ref state);
 
-        for (int index = 0; index < checks.Count; index++)
+        for (int slot = 0; slot < free.Count; slot++)
         {
-            CheckEntry check = checks[index];
-            result.Placements[PlacementKey(check)] = pool[index];
+            result.Placements[PlacementKey(checks[free[slot]])] = pool[slot];
+        }
 
+        // Prices are randomized for every shop slot, including held ones: a held item is held because
+        // moving it could deadlock a seed, which says nothing about what it should cost.
+        foreach (CheckEntry check in checks)
+        {
             if (check.IsShop)
             {
                 result.Prices[PlacementKey(check)] = PriceFor(check, ref state);
