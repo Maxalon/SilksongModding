@@ -63,6 +63,75 @@ def build_script_map(aa: str) -> dict[int, str]:
     return out
 
 
+def extract_shops(aa: str, scripts: dict[int, str], items: dict[int, str]) -> list[dict]:
+    """Shop slots, which are assets rather than scene objects.
+
+    A ShopItem is a ScriptableObject holding the item it sells and its price, and a ShopItemList groups
+    them into one shop's stock. Nothing about them is scene-scoped, which is why CheckId allows an empty
+    scope - the asset name is the whole identity.
+
+    The shop's own vanilla price range is recorded alongside each slot. Randomizing prices against a
+    per-shop range keeps each shop in character (the map seller stays cheap, the late-game smith does not)
+    instead of flattening every shop into one global spread.
+    """
+    by_class = {pid: name for pid, name in scripts.items() if name in ("ShopItem", "ShopItemList")}
+    root = os.path.join(aa, "dataassets_assets_assets")
+
+    slots: dict[int, dict] = {}
+    stocks: list[dict] = []
+    for entry in sorted(os.listdir(root)):
+        env = load(os.path.join(root, entry))
+        for obj in env.objects:
+            if obj.type.name != "MonoBehaviour":
+                continue
+            try:
+                tree = obj.read_typetree()
+            except Exception:
+                continue
+            kind = by_class.get(tree.get("m_Script", {}).get("m_PathID"))
+            if kind == "ShopItem":
+                slots[obj.path_id] = tree
+            elif kind == "ShopItemList":
+                stocks.append(tree)
+
+    out: list[dict] = []
+    for stock in stocks:
+        shop = stock.get("m_Name") or "<unnamed shop>"
+        members = [
+            slots[ptr.get("m_PathID")]
+            for ptr in (stock.get("shopItems") or [])
+            if ptr.get("m_PathID") in slots
+        ]
+        costs = [int(t.get("cost", 0)) for t in members if t.get("cost")]
+        low, high = (min(costs), max(costs)) if costs else (0, 0)
+
+        for tree in members:
+            sold = (tree.get("savedItem") or {}).get("m_PathID")
+            if not sold or sold not in items:
+                # Map pins and similar grant through a PlayerData flag rather than an item, so there is
+                # nothing to place. Recorded nowhere rather than recorded as a broken check.
+                continue
+            out.append(
+                {
+                    "id": "shop:" + (tree.get("m_Name") or ""),
+                    "path": shop,
+                    "scene": "",
+                    "pos": None,
+                    "key": tree.get("m_Name"),
+                    "facts": [
+                        {
+                            "kind": "shop",
+                            "item": items[sold],
+                            "shop": shop,
+                            "cost": int(tree.get("cost", 0)),
+                            "costRange": [low, high],
+                        }
+                    ],
+                }
+            )
+    return out
+
+
 def build_item_map(aa: str) -> dict[int, str]:
     """Item asset PathID -> asset name, so a pickup's item pointer resolves to something readable.
 
@@ -309,6 +378,11 @@ def main() -> int:
                 counts[fact["kind"]] += 1
         if len(stems) > 1 and index % 25 == 0:
             print(f"  {index}/{len(stems)} scenes, {len(results)} objects", file=sys.stderr)
+
+    shops = extract_shops(aa, scripts, items)
+    results.extend(shops)
+    for entry in shops:
+        counts["shop"] += 1
 
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w") as handle:

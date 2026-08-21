@@ -20,4 +20,14 @@ public sealed class RandomizerSaveData
     /// reshuffling under the player when the mod updates.
     /// </remarks>
     public System.Collections.Generic.Dictionary<string, string> Placements { get; set; } = new();
+
+    /// <summary>
+    /// Randomized shop prices, keyed the same way as <see cref="Placements"/>.
+    /// </summary>
+    /// <remarks>
+    /// Separate from the placements because a price is not a placement: only shop slots have one, and the
+    /// two are decided by different rules - what a slot holds comes from the shared item pool, what it
+    /// costs comes from its own shop's range.
+    /// </remarks>
+    public System.Collections.Generic.Dictionary<string, int> Prices { get; set; } = new();
 }

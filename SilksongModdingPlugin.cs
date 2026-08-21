@@ -269,6 +269,12 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
         ?? (System.Collections.Generic.IReadOnlyDictionary<string, string>)
            new System.Collections.Generic.Dictionary<string, string>();
 
+    /// <summary>Randomized shop prices for the save currently open, if it is randomized.</summary>
+    internal static System.Collections.Generic.IReadOnlyDictionary<string, int> CurrentPrices =>
+        pluginInstance?.OnceSaveData?.Prices
+        ?? (System.Collections.Generic.IReadOnlyDictionary<string, int>)
+           new System.Collections.Generic.Dictionary<string, int>();
+
     internal static bool TryAttachRandomizerData(int slot, string seed)
     {
         if (pluginInstance == null)
@@ -278,12 +284,18 @@ public partial class SilksongModdingPlugin : BaseUnityPlugin, IOnceSaveDataMod<R
 
         // The layout is generated here, not on load. DataManager writes OnceSaveData once, straight after
         // StartNewGame, so this is the last moment at which anything can be attached to the new save.
-        System.Collections.Generic.Dictionary<string, string> placements =
+        Randomizer.RandomizerFill.Result layout =
             Randomizer.RandomizerFill.Generate(seed, Randomizer.CheckDatabase.Checks);
 
-        pluginInstance.OnceSaveData = new RandomizerSaveData { Seed = seed, Placements = placements };
+        pluginInstance.OnceSaveData = new RandomizerSaveData
+        {
+            Seed = seed,
+            Placements = layout.Placements,
+            Prices = layout.Prices,
+        };
         pluginInstance.Logger.LogInfo(
-            $"Prepared randomizer seed {seed} for save slot {slot} with {placements.Count} placement(s).");
+            $"Prepared randomizer seed {seed} for save slot {slot} with {layout.Placements.Count} "
+            + $"placement(s) and {layout.Prices.Count} shop price(s).");
         return true;
     }
 

@@ -3,8 +3,8 @@
 
 extract-locations.py casts wide on purpose - 1157 candidates including every enemy that drops anything.
 This narrows that to what the runtime can actually place today: scene-placed CollectableItemPickup objects
-carrying a persistence key, which is the archetype whose swap mechanism is proven
-(SetItem with keepPersistence: true).
+carrying a persistence key, and shop slots. Both have a proven swap - SetItem with keepPersistence: true
+for a pickup, and the ShopItem asset's savedItem field for a shop slot.
 
 Each entry carries the hierarchy path as well as the key. Most keys are unique within their scene, but a
 few are not - the game derives a blank PersistentBoolItem ID from the GameObject name, and a scene can hold
@@ -32,9 +32,16 @@ def main() -> int:
         if not entry.get("key"):
             continue
         for fact in entry["facts"]:
-            if fact["kind"] != "pickup" or not fact.get("item"):
+            if fact["kind"] not in ("pickup", "shop") or not fact.get("item"):
                 continue
-            checks.append(
+            record = {"kind": fact["kind"]}
+            if fact["kind"] == "shop":
+                # A shop slot also carries a price, and the range its own shop charges. Randomizing
+                # against that range rather than a global one keeps each shop recognisable.
+                record["shop"] = fact.get("shop", "")
+                record["cost"] = fact.get("cost", 0)
+                record["costLow"], record["costHigh"] = fact.get("costRange", [0, 0])
+            record.update(
                 {
                     # The runtime's CheckId renders as "{kind}:{scene}:{local}", and a placement is looked
                     # up by exactly that string. Emitting the composed form here keeps the two definitions
@@ -46,6 +53,7 @@ def main() -> int:
                     "item": fact["item"],
                 }
             )
+            checks.append(record)
 
     checks.sort(key=lambda c: (c["scene"], c["path"], c["key"]))
     shared = {k for k, n in collections.Counter(c["id"] for c in checks).items() if n > 1}

@@ -71,6 +71,11 @@ internal static class RandomizerPlacements
 
         Active.Clear();
         IsLoaded = false;
+
+        // Shop stock lives on shared ScriptableObjects, so leaving a save has to undo those edits or the
+        // next save opened - vanilla or not - inherits this seed's shops.
+        ShopPlacements.RestoreAll();
+
         SilksongModdingPlugin.LogCheck("[placements] cleared on leaving the save.");
     }
 }

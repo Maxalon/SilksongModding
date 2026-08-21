@@ -22,6 +22,29 @@ internal sealed class CheckEntry
 
     /// <summary>True when another check in the same scene reports the same id.</summary>
     public bool Ambiguous { get; set; }
+
+    /// <summary>Which archetype this is: <c>pickup</c> or <c>shop</c>.</summary>
+    public string Kind { get; set; } = "pickup";
+
+    /// <summary>For a shop slot, the stock list it belongs to.</summary>
+    public string Shop { get; set; } = string.Empty;
+
+    /// <summary>For a shop slot, its unrandomized price.</summary>
+    public int Cost { get; set; }
+
+    /// <summary>
+    /// For a shop slot, the cheapest and dearest price its own shop charges.
+    /// </summary>
+    /// <remarks>
+    /// Prices are randomized within the shop's own spread rather than a single global one, so a shop keeps
+    /// its character - the map seller stays cheap, the late-game smith stays expensive - instead of every
+    /// shop converging on the same distribution.
+    /// </remarks>
+    public int CostLow { get; set; }
+
+    public int CostHigh { get; set; }
+
+    internal bool IsShop => Kind == "shop";
 }
 
 /// <summary>
@@ -30,8 +53,8 @@ internal sealed class CheckEntry
 /// <remarks>
 /// Generated offline by <c>tools/extract-locations.py</c> and narrowed by <c>tools/build-check-db.py</c>,
 /// rather than discovered by playing. It covers the scene-placed <c>CollectableItemPickup</c> archetype
-/// only — the one whose swap mechanism is proven — so a seed built on it is deliberately partial rather
-/// than complete.
+/// and shop slots — the two archetypes whose swap mechanism is proven — so a seed built on it is
+/// deliberately partial rather than complete.
 /// </remarks>
 internal static class CheckDatabase
 {

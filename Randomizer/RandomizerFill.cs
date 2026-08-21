@@ -23,28 +23,71 @@ namespace SilksongModding.Randomizer;
 /// </remarks>
 internal static class RandomizerFill
 {
-    internal static Dictionary<string, string> Generate(string seed, IReadOnlyList<CheckEntry> checks)
+    /// <summary>The layout, plus the prices that go with any shop slots in it.</summary>
+    internal sealed class Result
     {
-        Dictionary<string, string> placements = new(checks.Count);
+        internal Dictionary<string, string> Placements { get; } = new();
+
+        internal Dictionary<string, int> Prices { get; } = new();
+    }
+
+    internal static Result Generate(string seed, IReadOnlyList<CheckEntry> checks)
+    {
+        Result result = new();
         if (checks.Count == 0)
         {
-            return placements;
+            return result;
         }
 
+        // One pool across both archetypes on purpose: a tool that was sold in a shop can turn up in the
+        // world, and a world pickup can turn up for sale. Shuffling them separately would keep each
+        // archetype's items inside it and make the shuffle far less interesting.
         List<string> pool = new(checks.Count);
         foreach (CheckEntry check in checks)
         {
             pool.Add(check.Item);
         }
 
-        Shuffle(pool, seed);
+        ulong state = Hash(seed);
+        Shuffle(pool, ref state);
 
         for (int index = 0; index < checks.Count; index++)
         {
-            placements[PlacementKey(checks[index])] = pool[index];
+            CheckEntry check = checks[index];
+            result.Placements[PlacementKey(check)] = pool[index];
+
+            if (check.IsShop)
+            {
+                result.Prices[PlacementKey(check)] = PriceFor(check, ref state);
+            }
         }
 
-        return placements;
+        return result;
+    }
+
+    /// <summary>
+    /// A price drawn from the shop's own range, rather than from the item now sitting in the slot.
+    /// </summary>
+    /// <remarks>
+    /// Pricing by the item would leak the layout: an expensive tag would advertise a good item before the
+    /// player ever spoke to the shopkeeper. Pricing by the shop keeps a slot's cost uninformative while
+    /// still varying between seeds, and keeps each shop's spread recognisably its own.
+    /// </remarks>
+    private static int PriceFor(CheckEntry check, ref ulong state)
+    {
+        int low = check.CostLow > 0 ? check.CostLow : check.Cost;
+        int high = check.CostHigh > 0 ? check.CostHigh : check.Cost;
+        if (high <= low)
+        {
+            return low > 0 ? low : check.Cost;
+        }
+
+        int span = high - low + 1;
+        int price = low + (int)(NextRandom(ref state) % (ulong)span);
+
+        // Rounded to something a price tag would plausibly show, rather than 337 rosaries.
+        int rounded = price >= 100 ? price / 10 * 10 : price / 5 * 5;
+        return rounded < low ? low : rounded;
     }
 
     /// <summary>
@@ -58,9 +101,8 @@ internal static class RandomizerFill
     internal static string PlacementKey(CheckEntry check) =>
         check.Ambiguous ? check.Id + "|" + check.Path : check.Id;
 
-    private static void Shuffle(IList<string> items, string seed)
+    private static void Shuffle(IList<string> items, ref ulong state)
     {
-        ulong state = Hash(seed);
         for (int index = items.Count - 1; index > 0; index--)
         {
             int swap = (int)(NextRandom(ref state) % (ulong)(index + 1));
