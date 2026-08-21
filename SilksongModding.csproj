@@ -42,6 +42,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- tools/console holds C# meant for the in-game CinematicUnityExplorer console, not for this
+         assembly. It is pasted into a running game and compiled by that interpreter, so it must stay out
+         of the project's default compile glob. -->
+    <Compile Remove="tools/**/*.cs" />
+    <None Include="tools/**/*.cs" />
     <Folder Remove="thunderstore/temp;thunderstore/dist" />
     <None Include="README.md" Pack="True" PackagePath="README.md" />
     <None Include="thunderstore/icon.png" Pack="True" PackagePath="icon.png" />
