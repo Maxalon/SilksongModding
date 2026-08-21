@@ -586,3 +586,106 @@ internal static class FsmSpawnProbe
         }
     }
 }
+
+/// <summary>
+/// Watches how the floating mask shards and spool fragments actually hand over their contents.
+/// </summary>
+/// <remarks>
+/// <para>
+/// These are a third archetype. They carry a <c>SavedItemTrackerMarker</c> declaring what they give and a
+/// <c>PersistentBoolItem</c> to remember being taken, but no <c>CollectableItemPickup</c> and no
+/// <c>CollectableItemAction</c> — so neither the pickup patch nor the FSM item patch sees them, and 27 of
+/// them (14 mask shards, 13 spool fragments) sit outside the pool.
+/// </para>
+/// <para>
+/// Their FSM's Get state runs <c>SetPlayerDataBool</c> and two <c>CallMethodProper</c> calls, and the
+/// parameters of those are packed into PlayMaker's serialized action blob, which the bundle extractor
+/// cannot read without its own decoder. At runtime the same actions are ordinary objects with readable
+/// fields, so this reports which method is called and which flag is set — the two things needed to know
+/// where a substitution belongs.
+/// </para>
+/// <para>
+/// Filtered to owners carrying a <c>SavedItemTrackerMarker</c>. Both actions are used all over the game,
+/// and unfiltered they would bury the handful of lines that matter.
+/// </para>
+/// </remarks>
+[DiscoveryProbe]
+[HarmonyPatch]
+internal static class CollectableCutsceneProbe
+{
+    [HarmonyTargetMethods]
+    private static IEnumerable<System.Reflection.MethodBase> TargetMethods()
+    {
+        foreach (string name in new[]
+                 {
+                     "HutongGames.PlayMaker.Actions.CallMethodProper",
+                     "HutongGames.PlayMaker.Actions.SetPlayerDataBool",
+                     "HutongGames.PlayMaker.Actions.AddHeroInputBlocker",
+                 })
+        {
+            Type? action = AccessTools.TypeByName(name);
+            System.Reflection.MethodBase? onEnter =
+                action == null ? null : AccessTools.DeclaredMethod(action, "OnEnter");
+            if (onEnter != null)
+            {
+                yield return onEnter;
+            }
+        }
+    }
+
+    [HarmonyPostfix]
+    private static void Postfix(global::HutongGames.PlayMaker.FsmStateAction __instance)
+    {
+        try
+        {
+            GameObject? owner = __instance.Owner;
+            if (!owner || !owner!.GetComponent<global::SavedItemTrackerMarker>())
+            {
+                return;
+            }
+
+            SilksongModdingPlugin.LogCheck(
+                $"[cutscene] action={__instance.GetType().Name} " +
+                $"fsm='{__instance.Fsm?.Name}' state='{__instance.State?.Name}' " +
+                $"{DescribeParameters(__instance)} " +
+                $"{GrantDiagnostics.DescribeOwnerIdentity(owner)}");
+        }
+        catch (Exception error)
+        {
+            SilksongModdingPlugin.LogCheckWarning($"[cutscene] probe failed: {error}");
+        }
+    }
+
+    /// <summary>Reports the action's own string fields, which is where the method and flag names live.</summary>
+    private static string DescribeParameters(global::HutongGames.PlayMaker.FsmStateAction action)
+    {
+        StringBuilder described = new();
+        foreach (System.Reflection.FieldInfo field in action.GetType().GetFields(
+                     System.Reflection.BindingFlags.Instance
+                     | System.Reflection.BindingFlags.Public
+                     | System.Reflection.BindingFlags.NonPublic))
+        {
+            object? value = field.GetValue(action);
+            string? text = value switch
+            {
+                global::HutongGames.PlayMaker.FsmString fsmString => fsmString.Value,
+                string plain => plain,
+                _ => null,
+            };
+
+            if (string.IsNullOrEmpty(text))
+            {
+                continue;
+            }
+
+            if (described.Length > 0)
+            {
+                described.Append(' ');
+            }
+
+            described.Append(field.Name).Append("='").Append(text).Append('\'');
+        }
+
+        return described.Length > 0 ? described.ToString() : "params=<none>";
+    }
+}
