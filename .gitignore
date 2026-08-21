@@ -486,3 +486,9 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Extractor virtualenv (regenerate: python3 -m venv tools/.venv && tools/.venv/bin/pip install UnityPy)
+tools/.venv/
+
+# Derived from the game bundles - regenerable, and game-derived data is not ours to redistribute
+tools/locations.json
