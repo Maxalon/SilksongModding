@@ -618,9 +618,19 @@ internal static class CollectableCutsceneProbe
     {
         foreach (string name in new[]
                  {
+                     // Cutscene plumbing, which is what the first pass turned out to be catching:
+                     // GetCState, RelinquishControl, StopAnimationControl, and an isInvincible flag.
                      "HutongGames.PlayMaker.Actions.CallMethodProper",
                      "HutongGames.PlayMaker.Actions.SetPlayerDataBool",
                      "HutongGames.PlayMaker.Actions.AddHeroInputBlocker",
+
+                     // The grant itself. Mask shards and spool fragments raise PlayerData.heartPieces and
+                     // PlayerData.silkSpoolParts, and PrefabCollectable/HeartPieceOrb only handle the popup
+                     // and the flying-orb effect - so the increment has to be one of these.
+                     "HutongGames.PlayMaker.Actions.IncrementPlayerDataInt",
+                     "HutongGames.PlayMaker.Actions.PlayerDataIntAdd",
+                     "HutongGames.PlayMaker.Actions.SetPlayerDataInt",
+                     "HutongGames.PlayMaker.Actions.SendEventByName",
                  })
         {
             Type? action = AccessTools.TypeByName(name);
@@ -639,7 +649,16 @@ internal static class CollectableCutsceneProbe
         try
         {
             GameObject? owner = __instance.Owner;
-            if (!owner || !owner!.GetComponent<global::SavedItemTrackerMarker>())
+            if (!owner)
+            {
+                return;
+            }
+
+            // The marker may sit on a parent rather than the object running the FSM: these pickups carry
+            // three machines across a small hierarchy, and the first pass only looked at the exact owner,
+            // which is one way the grant could have been missed entirely.
+            if (!owner!.GetComponentInParent<global::SavedItemTrackerMarker>(includeInactive: true)
+                && !owner.GetComponentInChildren<global::SavedItemTrackerMarker>(includeInactive: true))
             {
                 return;
             }
@@ -669,6 +688,10 @@ internal static class CollectableCutsceneProbe
             string? text = value switch
             {
                 global::HutongGames.PlayMaker.FsmString fsmString => fsmString.Value,
+                global::HutongGames.PlayMaker.FsmInt fsmInt => fsmInt.Name is { Length: > 0 } named
+                    ? named + "=" + fsmInt.Value
+                    : fsmInt.Value.ToString(),
+                global::HutongGames.PlayMaker.FsmEvent fsmEvent => fsmEvent.Name,
                 string plain => plain,
                 _ => null,
             };
